@@ -1,0 +1,11 @@
+{
+    "name": "sekment-any vanilla Devcontainer",
+    "build": {
+        "dockerfile": "/home/jhnnsrs/Code/apps/sekment-any/.arkitekt_next/flavours/vanilla/Dockerfile",
+        "context": "../.."
+    },
+    "runArgs": [
+        "--network=host",
+        "--gpus=all"
+    ]
+}
