@@ -1,0 +1,82 @@
+builds:
+- build_id: aa03287d-11d3-4824-a9e9-1561e69c7979
+  build_run: 1c6811d1-e75d-4094-99ab-f05a3168ccf9
+  description: This is a vanilla flavour
+  flavour: vanilla
+  inspection:
+    implementations:
+    - definition:
+        args:
+        - assignWidget:
+            kind: SEARCH
+            query: "query SearchImages($search: String, $values: [ID!]) {\n  options:\
+              \ images(\n    filters: {name: {contains: $search}, ids: $values}\n\
+              \    pagination: {limit: 10}\n  ) {\n    value: id\n    label: name\n\
+              \    __typename\n  }\n}"
+            ward: mikro
+          description: The input image to be segmented.
+          effects: []
+          identifier: '@mikro/image'
+          key: image
+          kind: STRUCTURE
+          label: image
+          nullable: false
+          validators: []
+        collections: []
+        description: Segments an image using the SAM2 model and returns an instance
+          segmentation mask.
+        interfaces: []
+        isDev: false
+        isTestFor: []
+        kind: FUNCTION
+        name: Segment Image
+        portGroups: []
+        returns:
+        - assignWidget:
+            kind: SEARCH
+            query: "query SearchImages($search: String, $values: [ID!]) {\n  options:\
+              \ images(\n    filters: {name: {contains: $search}, ids: $values}\n\
+              \    pagination: {limit: 10}\n  ) {\n    value: id\n    label: name\n\
+              \    __typename\n  }\n}"
+            ward: mikro
+          description: Instance segmentation mask where each object has a unique ID.
+          effects: []
+          identifier: '@mikro/image'
+          key: return0
+          kind: STRUCTURE
+          label: return0
+          nullable: false
+          validators: []
+        stateful: false
+      dependencies: []
+      dynamic: false
+      interface: segment_image
+    requirements:
+    - description: An instance of ArkitektNext Datalayer to make requests to the user's
+        data
+      key: datalayer
+      optional: true
+      service: live.arkitekt.s3
+    - description: An instance of ArkitektNext Lok to authenticate the user
+      key: lok
+      optional: false
+      service: live.arkitekt.lok
+    - description: An instance of ArkitektNext Mikro to make requests to the user's
+        data
+      key: mikro
+      optional: true
+      service: live.arkitekt.mikro
+    - description: An instance of ArkitektNext Rekuest to assign to actions
+      key: rekuest
+      optional: false
+      service: live.arkitekt.rekuest
+    size: 17653793229
+  manifest:
+    author: jhnnsrs
+    entrypoint: app
+    identifier: sekment-any
+    scopes:
+    - read
+    version: 0.0.1
+  selectors: []
+latest_build_run: 1c6811d1-e75d-4094-99ab-f05a3168ccf9
